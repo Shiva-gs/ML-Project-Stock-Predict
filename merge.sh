@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo "date,open,high,low,close,volume,Name" > all_stocks_5yr.csv
+echo "date,open,high,low,close,volume,Adj Close,Name" > all_stocks_5yr.csv
 cd individual_stocks_5yr
 files=$(ls *.csv)
 for file in $files
