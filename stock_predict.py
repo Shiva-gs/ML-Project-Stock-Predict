@@ -8,10 +8,14 @@ from sklearn.preprocessing import MinMaxScaler
 import matplotlib.pyplot as plt
 
 # Import data
-data = pd.read_csv('data_stocks.csv')
+data = pd.read_csv('all_stocks_5yr.csv')
 
 # Drop date variable
-data = data.drop(['DATE'], 1)
+data = data.dropna()
+data = data.drop(['date','open','high','low','volume','Adj Close'],1)
+data = pd.pivot_table(data, index=['Name'], columns=data.groupby(['Name']).cumcount().add(1), values=['close'])
+data = data.dropna()
+data = data.T
 
 # Dimensions of dataset
 n = data.shape[0]
@@ -134,4 +138,4 @@ for e in range(epochs):
             pred = net.run(out, feed_dict={X: X_test})
             line2.set_ydata(pred)
             plt.title('Epoch ' + str(e) + ', Batch ' + str(i))
-            plt.pause(0.01)
+            plt.pause(0.05)
