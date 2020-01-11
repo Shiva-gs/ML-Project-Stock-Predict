@@ -139,3 +139,7 @@ for e in range(epochs):
             line2.set_ydata(pred)
             plt.title('Epoch ' + str(e) + ', Batch ' + str(i))
             plt.pause(0.05)
+            
+# Print final MSE after Training
+mse_final = net.run(mse, feed_dict={X: X_test, Y: y_test})
+print(mse_final)
