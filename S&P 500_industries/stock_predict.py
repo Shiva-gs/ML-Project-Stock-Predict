@@ -8,7 +8,7 @@ from sklearn.preprocessing import MinMaxScaler
 import matplotlib.pyplot as plt
 
 # Import data
-data = pd.read_csv('communication_Services_5yr.csv')
+data = pd.read_csv('comsumer_Staples_5yr.csv')
 
 # Drop date variable
 data = data.dropna()
@@ -144,6 +144,6 @@ for e in range(epochs):
 mse_final = net.run(mse, feed_dict={X: X_test, Y: y_test})
 print(mse_final)
 plt.autoscale(axis='y')
-plt.title("communication_Services",loc='center')
+plt.title("consumer_Staples_5yr",loc='center')
 plt.text(0,0, f"MSE_final={mse_final}", fontsize = 12 )
-plt.savefig('communication_Services_5yr')
+plt.savefig('consumer_Staples_5yr')
